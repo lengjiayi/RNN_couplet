@@ -253,7 +253,7 @@ def viewOut():
 
 def Answer(sentence):
 	testin = [SOS]
-	print('<s>{}<\\s>'.format(sentence))
+	print('上联：<s>{}<\\s>'.format(sentence))
 	for x in sentence:
 		if chmap.__contains__(x):
 			testin.append(chmap[x])
@@ -274,6 +274,7 @@ def Answer(sentence):
 	for t in range(maxlen):
 		decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden, encoder_outputs)
 		testout.append(torch.max(decoder_output,dim=1)[1].item())
+	print('下联：<s>',end='')
 	for x in testout:
 		if x==SOS:
 			print('<s>',end='')
